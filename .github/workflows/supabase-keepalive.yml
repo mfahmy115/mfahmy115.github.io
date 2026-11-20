@@ -1,0 +1,16 @@
+name: Supabase keep-alive (Mithaq)
+
+on:
+  schedule:
+    - cron: "17 6 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Supabase so the free project is not paused
+        run: |
+          curl -sS -o /dev/null -w "HTTP %{http_code}\n" \
+            "https://bvthriqewwwcuizffgrq.supabase.co/rest/v1/contract_templates?select=*&limit=1" \
+            -H "apikey: sb_publishable_zOq66qjbG8QY3SN1K3crEw_3sYx9339"
