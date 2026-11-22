@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>استمارة تعارف — محمد فهمي | استشارات تشغيل شركات التطوير العقاري</title>
+<meta name="description" content="استمارة تعارف لشركات التطوير العقاري: تشخيص التشغيل، أتمتة الإجراءات، نظام متكامل، وكورس Operation Manager.">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1E1A18;--acc:#B8461C;--acc2:#F08A5D;--paper:#F7F4F1;--bg:#FBF9F7;--stone:#7D736C;--line:#E7DFD8;--chip:#F1EAE4;--bad:#B3261E;--ok:#2E7D4F}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,sans-serif}
+  .wrap{max-width:720px;margin:0 auto;padding:26px 16px 60px}
+  header{background:var(--ink);color:#fff;border-radius:16px;padding:22px 20px;margin-bottom:18px;border-right:8px solid var(--acc)}
+  header .k{color:var(--acc2);font-weight:700;font-size:13px;margin-bottom:6px}
+  header h1{margin:0 0 6px;font-size:24px;font-weight:800}
+  header p{margin:0;color:#D9CFC8;font-size:14px;line-height:1.7}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 18px}
+  h2{font-size:17px;font-weight:800;margin:26px 0 12px;padding-top:18px;border-top:1.5px solid var(--line)}
+  h2:first-of-type{margin-top:0;padding-top:0;border-top:0}
+  .field{margin-bottom:14px}
+  .field label.l{display:block;font-size:13px;font-weight:700;color:var(--stone);margin-bottom:6px}
+  .field label.l b{color:var(--acc)}
+  input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);outline:none}
+  textarea{min-height:90px;resize:vertical}
+  input:focus,select:focus,textarea:focus{border-color:var(--acc)}
+  .invalid input,.invalid select,.invalid .chips{border-color:var(--bad);outline:1.5px solid var(--bad);border-radius:10px}
+  .err{display:none;color:var(--bad);font-size:12px;font-weight:700;margin-top:4px}
+  .invalid .err{display:block}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:flex;align-items:center;gap:9px;background:var(--chip);border-radius:9px;padding:10px 14px;font-size:14.5px;font-weight:600;cursor:pointer;user-select:none;border:1.5px solid transparent}
+  .chip input{width:18px;height:18px;accent-color:var(--acc);margin:0}
+  .chip:has(input:checked){background:#fff;border-color:var(--acc)}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  .actions{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+  .btn{border:0;border-radius:40px;padding:14px 30px;font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;background:var(--acc);color:#fff;min-width:150px}
+  .btn.wa{background:#1FA855}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  #done{display:none;text-align:center;padding:30px 18px}
+  #done.show{display:block}
+  #done .tick{width:62px;height:62px;border-radius:50%;background:var(--ok);color:#fff;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  #done h3{margin:0 0 6px;font-size:21px;font-weight:800}
+  #done p{margin:0 0 18px;color:var(--stone);font-size:14px;line-height:1.7}
+  #done .actions{justify-content:center}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 20px;border-radius:30px;font-size:13.5px;font-weight:700;opacity:0;pointer-events:none;transition:.25s}
+  .toast.show{opacity:1}
+  footer{text-align:center;color:var(--stone);font-size:12.5px;margin-top:22px;line-height:1.8}
+  footer a{color:var(--acc);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="k">استشارات تشغيل شركات التطوير العقاري</div>
+    <h1>استمارة تعارف</h1>
+    <p>دقيقتين بس. احكيلي عن شركتك والمشكلة اللي عايز تحلها، وهتواصل معاك خلال يوم عمل.</p>
+  </header>
+
+  <form id="form" class="card" novalidate autocomplete="on">
+    <div class="hp" aria-hidden="true"><label>اترك هذا الحقل فارغًا<input type="text" name="usercodeid" tabindex="-1" autocomplete="off"></label></div>
+    <input type="hidden" name="utm" id="utm">
+
+    <h2>بياناتك</h2>
+    <div class="grid2">
+      <div class="field" data-req><label class="l">الاسم <b>*</b></label><input type="text" name="name" autocomplete="name"><div class="err">مطلوب</div></div>
+      <div class="field"><label class="l">المسمى الوظيفي</label><input type="text" name="title" autocomplete="organization-title"></div>
+      <div class="field" data-req><label class="l">اسم الشركة <b>*</b></label><input type="text" name="company" autocomplete="organization"><div class="err">مطلوب</div></div>
+      <div class="field" data-req data-phone><label class="l">الموبايل / واتساب <b>*</b></label><input type="tel" name="mobile" dir="ltr" style="text-align:right" autocomplete="tel"><div class="err">رقم غير صحيح</div></div>
+      <div class="field" data-email><label class="l">البريد الإلكتروني</label><input type="email" name="email" dir="ltr" style="text-align:right" autocomplete="email"><div class="err">بريد إلكتروني غير صحيح</div></div>
+      <div class="field"><label class="l">عدد المشروعات الحالية</label>
+        <select name="projects"><option value="">اختر</option><option>مشروع واحد</option><option>2 – 3 مشروعات</option><option>4 – 6 مشروعات</option><option>أكثر من 6</option></select></div>
+    </div>
+
+    <h2>مهتم بإيه؟ <span style="color:var(--stone);font-weight:600;font-size:13px">(اختر واحد أو أكثر)</span></h2>
+    <div class="field" data-reqgroup="interest"><div class="chips" data-group="interest" data-type="checkbox" data-opts="تشخيص التشغيل|أتمتة إجراء (QR · حجز · عقد · سداد)|نظام متكامل (Master Data)|كورس Operation Manager|مش متأكد – عايز أتكلم الأول"></div><div class="err">اختر اختيار واحد على الأقل</div></div>
+
+    <h2>أكتر حاجة بتتعبك في التشغيل دلوقتي؟</h2>
+    <div class="chips" data-group="pain" data-type="checkbox" data-opts="أرقام مختلفة بين المبيعات والمالية|استثناءات في العقود|تقرير مجلس الإدارة يدوي|تحصيل متأخر|بيانات العملاء على ورق وواتساب|تأخير في التسليم|أخرى"></div>
+    <div class="field" style="margin-top:12px"><label class="l">تفاصيل إضافية (اختياري)</label><textarea name="notes" placeholder="مثلاً: عندنا 3 مشروعات والتقارير بتاخد أسبوع كل شهر…"></textarea></div>
+
+    <h2>تحب نتواصل إزاي؟</h2>
+    <div class="chips" data-group="contact" data-type="radio" data-opts="واتساب|مكالمة|إيميل"></div>
+
+    <div class="actions"><button type="submit" class="btn">إرسال</button></div>
+  </form>
+
+  <div id="done" class="card">
+    <div class="tick">✓</div>
+    <h3>شكرًا! خطوة أخيرة</h3>
+    <p>دوس «إرسال واتساب» عشان توصلني بياناتك فورًا،<br>أو ابعتها بالإيميل لو تحب.</p>
+    <div class="actions">
+      <button class="btn wa" id="btnWa" type="button">إرسال واتساب</button>
+      <button class="btn" id="btnMail" type="button">إرسال إيميل</button>
+      <button class="btn ghost" id="btnCopy" type="button">نسخ البيانات</button>
+      <button class="btn ghost" id="btnBack" type="button">تعديل</button>
+    </div>
+  </div>
+
+  <footer>محمد فهمي · <bdi>MBA, DBA</bdi> · 24 سنة في تشغيل شركات التطوير العقاري<br>
+    <a href="https://www.linkedin.com/in/mohamed-fahmy-mba-dba-91969679" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="https://mfahmy115.github.io" target="_blank" rel="noopener">الموقع</a></footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* Optional: Google Apps Script / Make / Zapier webhook URL to also receive every submission automatically (no user tap needed). */
+const SUBMIT_URL = '';
+const WHATSAPP_NUMBER = '201022991833';
+const EMAIL_TO = 'mfahmy115@gmail.com';
+
+const $ = s => document.querySelector(s);
+const form = $('#form');
+document.querySelectorAll('.chips[data-group]').forEach(box=>{
+  const g=box.dataset.group, type=box.dataset.type;
+  box.innerHTML = box.dataset.opts.split('|').map(o=>`<label class="chip"><input type="${type}" name="${g}" value="${o}"><span>${o}</span></label>`).join('');
+});
+try{ const q=new URLSearchParams(location.search); $('#utm').value=[...q.entries()].filter(([k])=>k.startsWith('utm_')||k==='src').map(([k,v])=>k+'='+v).join('&'); }catch(e){}
+
+const val = n => { const el=form.elements[n]; return el? el.value.trim() : ''; };
+const checked = g => [...form.querySelectorAll(`input[name="${g}"]:checked`)].map(x=>x.value);
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+
+function validate(){
+  let ok=true;
+  form.querySelectorAll('[data-req]').forEach(f=>{ const bad=!f.querySelector('input').value.trim(); f.classList.toggle('invalid',bad); if(bad) ok=false; });
+  const ph=form.querySelector('[data-phone]'), pv=ph.querySelector('input').value.replace(/[\s\-+()]/g,'');
+  if(pv && !/^\d{8,15}$/.test(pv)){ ph.classList.add('invalid'); ok=false; }
+  const em=form.querySelector('[data-email]'), v=em.querySelector('input').value.trim();
+  const badEm = v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); em.classList.toggle('invalid',!!badEm); if(badEm) ok=false;
+  const ig=form.querySelector('[data-reqgroup]'), noI=!checked('interest').length; ig.classList.toggle('invalid',noI); if(noI) ok=false;
+  return ok;
+}
+form.addEventListener('input',e=>{ const f=e.target.closest('.field'); if(f) f.classList.remove('invalid'); });
+
+let last=null;
+function collect(){
+  const d=new Date();
+  const rows=[
+    ['التاريخ', d.toLocaleDateString('en-GB')+' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})],
+    ['الاسم', val('name')], ['المسمى الوظيفي', val('title')], ['الشركة', val('company')],
+    ['الموبايل', val('mobile')], ['الإيميل', val('email')], ['عدد المشروعات', val('projects')],
+    ['مهتم بـ', checked('interest').join('، ')], ['التحديات', checked('pain').join('، ')],
+    ['تفاصيل', val('notes')], ['طريقة التواصل', checked('contact').join('')]];
+  if(val('utm')) rows.push(['المصدر', val('utm')]);
+  return rows;
+}
+function summaryText(){ return 'استمارة تعارف — استشارات التشغيل\n\n' + last.filter(r=>r[1]).map(r=>r[0]+': '+r[1]).join('\n'); }
+
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(form.elements['usercodeid'].value) return;
+  if(!validate()){ const b=form.querySelector('.invalid'); if(b) b.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  last=collect();
+  if(SUBMIT_URL){ try{ await fetch(SUBMIT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(Object.fromEntries(last))}); }catch(err){} }
+  form.style.display='none'; $('#done').classList.add('show'); window.scrollTo({top:0,behavior:'smooth'});
+});
+$('#btnWa').onclick=()=>window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(summaryText()),'_blank','noopener');
+$('#btnMail').onclick=()=>{ location.href='mailto:'+EMAIL_TO+'?subject='+encodeURIComponent('استمارة تعارف — '+val('company'))+'&body='+encodeURIComponent(summaryText()); };
+$('#btnCopy').onclick=async()=>{ try{ await navigator.clipboard.writeText(summaryText()); toast('تم النسخ'); }catch(e){ toast('تعذر النسخ'); } };
+$('#btnBack').onclick=()=>{ form.style.display='block'; $('#done').classList.remove('show'); window.scrollTo({top:0}); };
+</script>
+</body>
+</html>
