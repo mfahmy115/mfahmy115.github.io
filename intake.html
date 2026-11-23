@@ -88,13 +88,11 @@
 
   <div id="done" class="card">
     <div class="tick">✓</div>
-    <h3>شكرًا! خطوة أخيرة</h3>
-    <p>دوس «إرسال واتساب» عشان توصلني بياناتك فورًا،<br>أو ابعتها بالإيميل لو تحب.</p>
+    <h3>شكرًا! وصلتنا بياناتك</h3>
+    <p>هنتواصل معاك خلال يوم عمل.<br>ولو حابب تكلمني مباشرة:</p>
     <div class="actions">
-      <button class="btn wa" id="btnWa" type="button">إرسال واتساب</button>
-      <button class="btn" id="btnMail" type="button">إرسال إيميل</button>
-      <button class="btn ghost" id="btnCopy" type="button">نسخ البيانات</button>
-      <button class="btn ghost" id="btnBack" type="button">تعديل</button>
+      <button class="btn wa" id="btnWa" type="button">كلمني واتساب</button>
+      <button class="btn" id="btnMail" type="button">ابعت إيميل</button>
     </div>
   </div>
 
@@ -157,9 +155,11 @@ form.addEventListener('submit',async e=>{
   form.style.display='none'; $('#done').classList.add('show'); window.scrollTo({top:0,behavior:'smooth'});
 });
 $('#btnWa').onclick=()=>window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(summaryText()),'_blank','noopener');
-$('#btnMail').onclick=()=>{ location.href='mailto:'+EMAIL_TO+'?subject='+encodeURIComponent('استمارة تعارف — '+val('company'))+'&body='+encodeURIComponent(summaryText()); };
-$('#btnCopy').onclick=async()=>{ try{ await navigator.clipboard.writeText(summaryText()); toast('تم النسخ'); }catch(e){ toast('تعذر النسخ'); } };
-$('#btnBack').onclick=()=>{ form.style.display='block'; $('#done').classList.remove('show'); window.scrollTo({top:0}); };
+$('#btnMail').onclick=()=>{
+  const su=encodeURIComponent('استمارة تعارف — '+val('company')), bo=encodeURIComponent(summaryText());
+  if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) location.href='mailto:'+EMAIL_TO+'?subject='+su+'&body='+bo;
+  else window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+EMAIL_TO+'&su='+su+'&body='+bo,'_blank','noopener');
+};
 </script>
 </body>
 </html>
